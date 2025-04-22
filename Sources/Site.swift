@@ -18,6 +18,8 @@ struct ExampleSite: Site {
     var name = "TomoCodes"
     var titleSuffix = " – TomoCodes"
     var url = URL(static: "https://tomo.codes")
+    /// Manually passed as custom component to HEAD
+    var favicon: URL? = nil
     var builtInIconsEnabled = true
 
     var author = "Tomasz Lizer"
