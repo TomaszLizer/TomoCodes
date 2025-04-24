@@ -23,6 +23,9 @@ struct ExampleSite: Site {
     var builtInIconsEnabled = true
 
     var author = "Tomasz Lizer"
+    
+    var lightTheme: (any Theme)? = LightTheme()
+    var darkTheme: (any Theme)? = DarkTheme()
 
     var homePage = Home()
     var layout = MainLayout()
