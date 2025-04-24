@@ -9,9 +9,13 @@ struct MainLayout: Layout {
             }
         }
         Body {
+            LogoNavBar()
+            
             content
             
             Footer()
         }
+        .padding(.top, .px(120))
+        .padding(.bottom, .medium)
     }
 }
