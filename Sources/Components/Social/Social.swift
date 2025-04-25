@@ -20,7 +20,15 @@ enum Social: String, CaseIterable, Sendable, InlineElement {
     }
     
     var icon: Image {
-        Image(systemName: "\(rawValue)")
+        Image(systemName: "\(rawValue)", description: iconDescription)
+    }
+    
+    var iconDescription: String {
+        switch self {
+        case .github: "GitHub icon"
+        case .linkedin: "LinkedIn icon"
+        case .instagram: "Instagram icon"
+        }
     }
     
     var urlString: String {
