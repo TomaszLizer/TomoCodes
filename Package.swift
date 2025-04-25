@@ -7,7 +7,7 @@ let package = Package(
     name: "TomoCodes",
     platforms: [.macOS(.v14)],
     dependencies: [
-        .package(url: "https://github.com/twostraws/Ignite.git", branch: "main")
+        .package(url: "https://github.com/twostraws/Ignite.git", branch: "v0.6-beta")
     ],
     targets: [
         .executableTarget(

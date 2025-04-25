@@ -11,7 +11,7 @@ import Ignite
 enum Social: String, CaseIterable, Sendable, InlineElement {
     case github, linkedin, instagram
     
-    var body: some HTML {
+    var body: some InlineElement {
         Link(icon, target: urlString)
             .target(.newWindow)
             .relationship(.noOpener)

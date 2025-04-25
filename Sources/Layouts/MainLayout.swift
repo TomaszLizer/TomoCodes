@@ -2,7 +2,7 @@ import Foundation
 import Ignite
 
 struct MainLayout: Layout {
-    var body: some HTML {
+    var body: Document {
         Head {
             for favicon in Favicon.allCases {
                 favicon.metalink()

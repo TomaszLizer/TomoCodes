@@ -7,11 +7,13 @@
 
 import Ignite
 
-struct SocialFooter: InlineElement {
+struct SocialFooter: HTML {
 
     var body: some HTML {
         Text {
-            ForEach(Social.allCases) { $0 }
+            for item in Social.allCases {
+                item
+            }
         }
         .margin(.zero)
         .font(.title1)
