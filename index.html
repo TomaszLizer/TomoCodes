@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="John Appleseed" />
-    <meta name="generator" content="Ignite v0.5.2" />
-    <title>Home – My Awesome Site</title>
+    <meta name="author" content="Tomasz Lizer" />
+    <meta name="generator" content="Ignite v0.6.0" />
+    <title>Home – TomoCodes</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/css/bootstrap-icons.min.css" rel="stylesheet" />
     <link href="/css/ignite-core.min.css" rel="stylesheet" />
-    <link href="https://www.example.com/" rel="canonical" />
+    <link href="https://tomo.codes/" rel="canonical" />
     <script>(function() {
     function getThemePreference() {
         return localStorage.getItem('custom-theme') || 'auto';
@@ -54,19 +54,60 @@
     applySyntaxTheme();
 })();
 </script>
-    <meta property="og:site_name" content="Hello World" />
+    <meta property="og:site_name" content="TomoCodes" />
     <meta property="og:title" content="Home" />
     <meta name="twitter:title" content="Home" />
-    <meta property="og:url" content="https://www.example.com/" />
-    <meta name="twitter:domain" content="example.com" />
+    <meta property="og:url" content="https://tomo.codes/" />
+    <meta name="twitter:domain" content="tomo.codes" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:dnt" content="on" />
+    <link href="/images/favicons/favicon.ico" rel="icon" />
+    <link sizes="96x96" type="image/png" href="/images/favicons/favicon-96x96.png" rel="icon" />
+    <link sizes="180x180" href="/images/favicons/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="/images/favicons/site.webmanifest" rel="manifest" />
+    <link href="/css/typewriter-cursor.css" rel="stylesheet" />
+    <meta name="theme-color" content="rgb(245 240 230)" media="(prefers-color-scheme: light" />
+    <meta name="theme-color" content="rgb(43 34 34)" media="(prefers-color-scheme: dark" />
   </head>
-  <body class="container">
-    <div>
-      <h1>Hello world!</h1>
+  <body class="pb-3 container" style="padding-top: 120px">
+    <header>
+      <nav class="fixed-top material-ultra-thin bg-body-secondary bg-opacity-50 navbar navbar-expand-md">
+        <div class="container flex-wrap flex-lg-nowrap">
+          <div class="me-2 me-md-auto">
+            <a href="/" class="d-inline-flex align-items-center navbar-brand"><img src="/images/TomoCodes%20Icon.webp" alt="Tomo Codes Icon" class="fs-2" style="height: 60px" /><span class="lead text-body" style="font-weight: 400; font-family: 'PressStart2P'">TomoCodes</span></a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="ig-main-content">
+      <div class="pt-2 pb-4">
+        <h2>Coffee, Code &amp; DIY</h2>
+        <h6>Thoughts on <span data-words="Hacking,Espresso,Projects,Tinkering" class="typing-text"></span><span class="cursor">|</span></h6>
+        <script src="/scripts/typewriter.js"></script>
+      </div>
+      <div>
+        <img src="/images/PixAvatar.webp" alt="Pixelated avatar of me" class="img-fluid float-start rounded-circle bg-body-secondary me-3 mb-2" style="width: 100px; border: 2.0px solid rgb(0 0 0 / 100%)" />
+        <h2>About me</h2>
+        <p>Hi, I'm <strong>Tomasz</strong> — but friends call me <strong>Tomo.</strong><br />A passionate Software Engineer with 7 years of experience. I specialize in Apple platforms, especially iOS. My love for mobile tech started early — tinkering with gadgets was second nature. Though I studied Nuclear Power Engineering, I eventually followed my true passion and dove headfirst into iOS development.</p>
+        <p>When I’m not writing Swift code, you’ll likely find me pulling espresso shots, practicing latte art, or fixing something around the house — from coffee machines to electronics.</p>
+        <p>Welcome to my corner where code, coffee, and creativity come together!</p>
+      </div>
+      <div>
+        <h2>Latest post</h2>
+        <h6>Working on that :)</h6>
+      </div>
     </div>
-    <p class="text-center mt-5">Created in Swift with <a href="https://github.com/twostraws/Ignite">Ignite</a></p>
+    <div class="vstack gap-3">
+      <div class="mb-0 align-self-center">
+        <h1 style="margin: 0px"><a target="_blank" rel="noopener" href="https://github.com/TomaszLizer" class="m-2 link-primary"><i class="bi-github"></i></a><a target="_blank" rel="noopener" href="https://linkedin.com/in/tomasz-lizer-9b390bb4/" class="m-2 link-primary"><i class="bi-linkedin"></i></a><a target="_blank" rel="noopener" href="https://instagram.com/engineer_pedi" class="m-2 link-primary"><i class="bi-instagram"></i></a></h1>
+      </div>
+      <div class="mb-0 align-self-center" style="display: inline-block">
+        <div class="vstack">
+          <p class="mb-0 align-self-center">Copyright © Tomasz Lizer 2025</p>
+          <p class="mb-0 align-self-center">Created in Swift with <a target="_blank" rel="noopener" href="https://github.com/twostraws/Ignite" class="link-plain">Ignite</a></p>
+        </div>
+      </div>
+    </div>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/ignite-core.js"></script>
   </body>
