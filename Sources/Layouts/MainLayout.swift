@@ -7,6 +7,7 @@ struct MainLayout: Layout {
             for favicon in Favicon.allCases {
                 favicon.metalink()
             }
+            MetaLink(href: "/css/typewriter-cursor.css", rel: .stylesheet)
         }
         Body {
             LogoNavBar()

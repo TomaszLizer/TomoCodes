@@ -26,12 +26,26 @@ struct Home: StaticPage {
     private var articles
     
     var body: some HTML {
+        Text("Coffee, Code & DIY")
+            .font(.title2)
         
+        Text{
+            "Thoughts on "
+            Span()
+                .class("typing-text")
+                .attribute("data-words", "Hacking,Espresso,Projects,Tinkering")
+            Span("|")
+                .class("cursor")
+        }
+        .font(.title6)
+            
         Text(bio)
             .font(.body)
         
         ForEach(articles.all) { article in
             Link(article.title, target: article)
         }
+        
+        Script(file: URL(static: "/scripts/typewriter.js"))
     }
 }
