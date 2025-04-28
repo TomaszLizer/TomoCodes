@@ -18,5 +18,15 @@ extension Font {
             source: "/fonts/PressStart2P-Regular.ttf"
         )
     }
+    
+    /// Nunito font..
+    ///
+    /// https://fonts.google.com/specimen/Nunito
+    static var nunito: Font {
+        Font(
+            name: "Nunito",
+            source: "/fonts/Nunito-VariableFont_wght.ttf"
+        )
+    }
 }
 

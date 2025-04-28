@@ -26,6 +26,7 @@ struct DarkTheme: BaseTheme {
 
 extension BaseTheme {
     
+    var font: Ignite.Font { .nunito }
     var headingFont: Ignite.Font { .pressStart2P }
 }
 
