@@ -15,7 +15,7 @@ enum Social: String, CaseIterable, Sendable, InlineElement {
         Link(icon, target: urlString)
             .target(.newWindow)
             .relationship(.noOpener)
-            .role(.secondary)
+            .role(.primary)
             .margin(.small)
     }
     

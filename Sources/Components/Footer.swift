@@ -14,7 +14,7 @@ struct Footer: HTML {
             SocialFooter()
             
             VStack(alignment: .center) {
-                Text("Copyright © T.L. \(Date().year)")
+                Text("Copyright © Tomasz Lizer \(Date().year)")
                 igniteFooter
             }
             .fixedSize()

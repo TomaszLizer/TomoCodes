@@ -35,10 +35,12 @@ extension BaseTheme {
 extension BaseTheme {
     
     var accent: Ignite.Color { color(.accent) }
-    var primary: Ignite.Color { color(.primary) }
+    var primary: Ignite.Color { color(.Text.primary) }
     
     var background: Ignite.Color { color(.Background.primary) }
     var secondaryBackground: Ignite.Color { color(.Background.secondary) }
+    
+    var border: Ignite.Color { color(.Border.primary) }
     
     private func color(_ resource: ColorResource) -> Ignite.Color {
         return .init(resource, scheme: colorScheme)

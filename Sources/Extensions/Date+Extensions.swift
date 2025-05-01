@@ -15,4 +15,9 @@ extension Date {
             .dateComponents([.year], from: self)
             .year!
     }
+    
+    /// Number of years since 2018.
+    static var yearsOfExp: Int {
+        Date().year - 2018
+    }
 }

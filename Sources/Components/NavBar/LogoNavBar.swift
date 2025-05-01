@@ -35,6 +35,7 @@ struct LogoNavBar: HTML {
         "TomoCodes"
             .font(font)
             .font(.lead)
+            .foregroundStyle(.body)
     }
     
     private var font: Font { .pressStart2P }

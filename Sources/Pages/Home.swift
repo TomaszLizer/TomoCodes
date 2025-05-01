@@ -5,47 +5,70 @@ struct Home: StaticPage {
     
     let title = "Home"
     
-    var bio: String {
-    """
-    I'm a passionate Software Engineer with \(yearsOfExp) years of experience \
-    specialising in iOS and Apple platforms. \
-    My love for mobile tech started early — tinkering with gadgets was second nature. \
-    Although I studied Nuclear Power Engineering, I eventually followed my true passion and dove \
-    headfirst into iOS development. When I’m not writing Swift code, you’ll probably find me \
-    pulling espresso shots, practicing latte art, or fixing something around the house — from \
-    coffee machines to electronics. On this page, I’ll share thoughts on code, coffee, DIY projects, \
-    and everything in between.
-    """
-    }
-    
-    var yearsOfExp: Int {
-        return Date().year - 2018
-    }
-    
     @Environment(\.articles)
     private var articles
     
     var body: some HTML {
-        Text("Coffee, Code & DIY")
-            .font(.title2)
+        HeroSection(
+            title: "Coffee, Code & DIY",
+            subtitle: "Thoughts on ",
+            typewriterData: ["Hacking", "Espresso", "Projects", "Tinkering"]
+        )
         
-        Text{
-            "Thoughts on "
-            Span()
-                .class("typing-text")
-                .attribute("data-words", "Hacking,Espresso,Projects,Tinkering")
-            Span("|")
-                .class("cursor")
-        }
-        .font(.title6)
+        Section {
+            Image("/images/PixAvatar.webp", description: "Pixelated avatar of me")
+                .resizable()
+                .frame(width: 100)
+                .class("float-start", "rounded-circle")
+                .border(.black, width: 2)
+                .class("bg-body-secondary")
+                .margin(.trailing, .medium)
+                .margin(.bottom, .small)
             
-        Text(bio)
-            .font(.body)
-        
-        ForEach(articles.all) { article in
-            Link(article.title, target: article)
+            Text("About me")
+                .font(.title2)
+            Text {
+                "Hi, I'm "
+                Strong("Tomasz")
+                " — but friends call me "
+                Strong("Tomo.")
+                "<br>"
+                """
+                A passionate Software Engineer with \(Date.yearsOfExp) years of experience. \
+                I specialize in Apple platforms, especially iOS. \
+                My love for mobile tech started early — \
+                tinkering with gadgets was second nature. \
+                Though I studied Nuclear Power Engineering, \
+                I eventually followed my true passion and dove \
+                headfirst into iOS development.
+                """
+            }
+            Text {
+                """
+                When I’m not writing Swift code, you’ll likely find \
+                me pulling espresso shots, practicing latte art, \
+                or fixing something around the house — \
+                from coffee machines to electronics.
+                """
+            }
+            Text {
+                """
+                Welcome to my corner where code, coffee, \
+                and creativity come together!
+                """
+            }
         }
         
-        Script(file: URL(static: "/scripts/typewriter.js"))
+        Section {
+            Text("Latest post").font(.title2)
+            let allArticles = articles.all
+            if allArticles.isEmpty {
+                Text("Working on that :)").font(.title6)
+            } else {
+                ForEach(articles.all) { article in
+                    Link(article.title, target: article)
+                }
+            }
+        }
     }
 }
