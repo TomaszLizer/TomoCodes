@@ -8,6 +8,8 @@ struct MainLayout: Layout {
                 favicon.metalink()
             }
             MetaLink(href: "/css/typewriter-cursor.css", rel: .stylesheet)
+            MetaTag.themeColor(.Background.primary, scheme: .light)
+            MetaTag.themeColor(.Background.primary, scheme: .dark)
         }
         Body {
             LogoNavBar()
