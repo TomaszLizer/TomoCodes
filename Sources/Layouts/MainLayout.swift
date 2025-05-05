@@ -10,6 +10,7 @@ struct MainLayout: Layout {
             MetaLink(href: "/css/typewriter-cursor.css", rel: .stylesheet)
             MetaTag.themeColor(.Background.primary, scheme: .light)
             MetaTag.themeColor(.Background.primary, scheme: .dark)
+            Analytics(.goatCounter("tomo"))
         }
         Body {
             LogoNavBar()
