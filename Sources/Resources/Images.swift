@@ -11,7 +11,7 @@ extension Image {
     
     static var tomoCodesIcon: Image {
         Image(
-            "/images/TomoCodes Icon.webp",
+            "/media/TomoCodes Icon.webp",
             description: "Tomo Codes Icon"
         )
     }

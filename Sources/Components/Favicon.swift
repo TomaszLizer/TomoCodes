@@ -23,7 +23,7 @@ enum Favicon: CaseIterable {
     }
     
     var href: String {
-        "/images/favicons/\(filename)"
+        "/media/favicons/\(filename)"
     }
     
     var filename: String {

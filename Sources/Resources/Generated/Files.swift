@@ -26,34 +26,45 @@ internal enum Files {
     /// fonts/PressStart2P-Regular.ttf
     internal static let pressStart2PRegularTtf = File(name: "PressStart2P-Regular", ext: "ttf", relativePath: "fonts", mimeType: "font/ttf")
   }
-  /// images/
-  internal enum Images {
-    /// images/Images.txt
-    internal static let imagesTxt = File(name: "Images", ext: "txt", relativePath: "images", mimeType: "text/plain")
-    /// images/PixAvatar.webp
-    internal static let pixAvatarWebp = File(name: "PixAvatar", ext: "webp", relativePath: "images", mimeType: "image/webp")
-    /// images/TomoCodes Icon.webp
-    internal static let tomoCodesIconWebp = File(name: "TomoCodes Icon", ext: "webp", relativePath: "images", mimeType: "image/webp")
-    /// images/xcode-layout.png
-    internal static let xcodeLayoutPng = File(name: "xcode-layout", ext: "png", relativePath: "images", mimeType: "image/png")
-    /// images/xcode-settings-key-bindings.png
-    internal static let xcodeSettingsKeyBindingsPng = File(name: "xcode-settings-key-bindings", ext: "png", relativePath: "images", mimeType: "image/png")
-    /// images/favicons/
+  /// media/
+  internal enum Media {
+    /// media/Images.txt
+    internal static let imagesTxt = File(name: "Images", ext: "txt", relativePath: "media", mimeType: "text/plain")
+    /// media/PixAvatar.webp
+    internal static let pixAvatarWebp = File(name: "PixAvatar", ext: "webp", relativePath: "media", mimeType: "image/webp")
+    /// media/TomoCodes Icon.webp
+    internal static let tomoCodesIconWebp = File(name: "TomoCodes Icon", ext: "webp", relativePath: "media", mimeType: "image/webp")
+    /// media/favicons/
     internal enum Favicons {
-      /// images/favicons/apple-touch-icon.png
-      internal static let appleTouchIconPng = File(name: "apple-touch-icon", ext: "png", relativePath: "images/favicons", mimeType: "image/png")
-      /// images/favicons/favicon.ico
-      internal static let faviconIco = File(name: "favicon", ext: "ico", relativePath: "images/favicons", mimeType: "image/vnd.microsoft.icon")
-      /// images/favicons/favicon.svg
-      internal static let faviconSvg = File(name: "favicon", ext: "svg", relativePath: "images/favicons", mimeType: "image/svg+xml")
-      /// images/favicons/favicon-96x96.png
-      internal static let favicon96x96Png = File(name: "favicon-96x96", ext: "png", relativePath: "images/favicons", mimeType: "image/png")
-      /// images/favicons/site.webmanifest
-      internal static let siteWebmanifest = File(name: "site", ext: "webmanifest", relativePath: "images/favicons", mimeType: "application/octet-stream")
-      /// images/favicons/web-app-manifest-192x192.png
-      internal static let webAppManifest192x192Png = File(name: "web-app-manifest-192x192", ext: "png", relativePath: "images/favicons", mimeType: "image/png")
-      /// images/favicons/web-app-manifest-512x512.png
-      internal static let webAppManifest512x512Png = File(name: "web-app-manifest-512x512", ext: "png", relativePath: "images/favicons", mimeType: "image/png")
+      /// media/favicons/apple-touch-icon.png
+      internal static let appleTouchIconPng = File(name: "apple-touch-icon", ext: "png", relativePath: "media/favicons", mimeType: "image/png")
+      /// media/favicons/favicon.ico
+      internal static let faviconIco = File(name: "favicon", ext: "ico", relativePath: "media/favicons", mimeType: "image/vnd.microsoft.icon")
+      /// media/favicons/favicon-96x96.png
+      internal static let favicon96x96Png = File(name: "favicon-96x96", ext: "png", relativePath: "media/favicons", mimeType: "image/png")
+      /// media/favicons/site.webmanifest
+      internal static let siteWebmanifest = File(name: "site", ext: "webmanifest", relativePath: "media/favicons", mimeType: "application/octet-stream")
+      /// media/favicons/web-app-manifest-192x192.png
+      internal static let webAppManifest192x192Png = File(name: "web-app-manifest-192x192", ext: "png", relativePath: "media/favicons", mimeType: "image/png")
+      /// media/favicons/web-app-manifest-512x512.png
+      internal static let webAppManifest512x512Png = File(name: "web-app-manifest-512x512", ext: "png", relativePath: "media/favicons", mimeType: "image/png")
+    }
+    /// media/mac-os-keyboard-navigation/
+    internal enum MacOsKeyboardNavigation {
+      /// media/mac-os-keyboard-navigation/header.webp
+      internal static let headerWebp = File(name: "header", ext: "webp", relativePath: "media/mac-os-keyboard-navigation", mimeType: "image/webp")
+      /// media/mac-os-keyboard-navigation/keyboard-navigation-settings-dark.webp
+      internal static let keyboardNavigationSettingsDarkWebp = File(name: "keyboard-navigation-settings-dark", ext: "webp", relativePath: "media/mac-os-keyboard-navigation", mimeType: "image/webp")
+      /// media/mac-os-keyboard-navigation/keyboard-navigation-settings-light.webp
+      internal static let keyboardNavigationSettingsLightWebp = File(name: "keyboard-navigation-settings-light", ext: "webp", relativePath: "media/mac-os-keyboard-navigation", mimeType: "image/webp")
+      /// media/mac-os-keyboard-navigation/kn_disabled-dark.mp4
+      internal static let knDisabledDarkMp4 = File(name: "kn_disabled-dark", ext: "mp4", relativePath: "media/mac-os-keyboard-navigation", mimeType: "video/mp4")
+      /// media/mac-os-keyboard-navigation/kn_disabled-light.mp4
+      internal static let knDisabledLightMp4 = File(name: "kn_disabled-light", ext: "mp4", relativePath: "media/mac-os-keyboard-navigation", mimeType: "video/mp4")
+      /// media/mac-os-keyboard-navigation/kn_enabled-dark.mp4
+      internal static let knEnabledDarkMp4 = File(name: "kn_enabled-dark", ext: "mp4", relativePath: "media/mac-os-keyboard-navigation", mimeType: "video/mp4")
+      /// media/mac-os-keyboard-navigation/kn_enabled-light.mp4
+      internal static let knEnabledLightMp4 = File(name: "kn_enabled-light", ext: "mp4", relativePath: "media/mac-os-keyboard-navigation", mimeType: "video/mp4")
     }
   }
   /// scripts/
@@ -64,16 +75,6 @@ internal enum Files {
     internal static let themeAwareVideoJs = File(name: "theme-aware-video", ext: "js", relativePath: "scripts", mimeType: "text/javascript")
     /// scripts/typewriter.js
     internal static let typewriterJs = File(name: "typewriter", ext: "js", relativePath: "scripts", mimeType: "text/javascript")
-  }
-  /// videos/
-  internal enum Videos {
-    /// videos/mac-os-keyboard-navigation/
-    internal enum MacOsKeyboardNavigation {
-      /// videos/mac-os-keyboard-navigation/kn_enabled-dark.mp4
-      internal static let knEnabledDarkMp4 = File(name: "kn_enabled-dark", ext: "mp4", relativePath: "videos/mac-os-keyboard-navigation", mimeType: "video/mp4")
-      /// videos/mac-os-keyboard-navigation/kn_enabled-light.mp4
-      internal static let knEnabledLightMp4 = File(name: "kn_enabled-light", ext: "mp4", relativePath: "videos/mac-os-keyboard-navigation", mimeType: "video/mp4")
-    }
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name

@@ -16,7 +16,7 @@ struct Home: StaticPage {
         )
         
         Section {
-            Image("/images/PixAvatar.webp", description: "Pixelated avatar of me")
+            Image("/media/PixAvatar.webp", description: "Pixelated avatar of me")
                 .resizable()
                 .frame(width: 100)
                 .class("float-start", "rounded-circle")
