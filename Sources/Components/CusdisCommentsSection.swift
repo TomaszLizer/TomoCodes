@@ -20,7 +20,7 @@ struct CusdisCommentsSection: HTML {
             
             cusdidContainer
             
-            Script(file: URL(static: "/scripts/CusdisScript.js"))
+            Script(file: "/scripts/cusdis-theme-support.js")
         }
         .padding([.top, .bottom], .large)
     }
