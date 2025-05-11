@@ -15,6 +15,12 @@ struct Home: StaticPage {
             typewriterData: ["Hacking", "Espresso", "Projects", "Tinkering"]
         )
         
+        aboutMe
+        
+        latestPost
+    }
+    
+    private var aboutMe: some HTML {
         Section {
             Image("/media/PixAvatar.webp", description: "Pixelated avatar of me")
                 .resizable()
@@ -58,17 +64,19 @@ struct Home: StaticPage {
                 """
             }
         }
-        
+    }
+    
+    private var latestPost: some HTML {
         Section {
             Text("Latest post").font(.title2)
-            let allArticles = articles.all
-            if allArticles.isEmpty {
-                Text("Working on that :)").font(.title6)
+            
+            if let latestPost = articles.typed(.blog).first {
+                PostsGrid(articles: [latestPost])
             } else {
-                ForEach(articles.all) { article in
-                    Link(article.title, target: article)
-                }
+                Text("Working on that :)").font(.title6)
             }
         }
+        .padding(.vertical, .large)
     }
 }
+

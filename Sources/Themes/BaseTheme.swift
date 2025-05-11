@@ -54,8 +54,8 @@ extension BaseTheme {
     var siteWidth: ResponsiveValues {
         .init(
             large: .px(700),
-            xLarge: .px(700),
-            xxLarge: .px(700)
+            xLarge: .px(900),
+            xxLarge: .px(900)
         )
     }
 }

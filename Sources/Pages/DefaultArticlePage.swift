@@ -24,9 +24,8 @@ struct DefaultArticlePage: ArticlePage {
                     .font(.title5)
             }
 
-            if let image = article.image {
-                Image(image, description: article.imageDescription)
-                    .resizable()
+            if let image = article.imageHTML {
+                image
                     .cornerRadius(20)
                     .margin([.top, .bottom], .medium)
             }
@@ -44,23 +43,15 @@ struct DefaultArticlePage: ArticlePage {
     private var tagsAndDate: some HTML {
         HStack(alignment: .top) {
             ForEach(article.tags ?? []) { tag in
-                Text {
-                    Badge(tag)
-                        .badgeStyle(.subtleBordered)
-                        .role(.secondary)
-                }
-                .font(.small)
+                ArticleTag(tag: tag)
             }
             Spacer()
             
             VStack(alignment: .trailing) {
-                let dateString = article.date.formatted(date: .long, time: .omitted)
-                let updateDate = article.lastModified.formatted(date: .long, time: .omitted)
+                article.dateAndReadTimeHTML
                 
-                "\(dateString) · \(article.estimatedReadingMinutes) min read"
-                
-                if updateDate != dateString {
-                    "Updated \(updateDate)"
+                if article.isUpdated {
+                    article.updateDateHTML
                 }
             }
             .foregroundStyle(.gray)
