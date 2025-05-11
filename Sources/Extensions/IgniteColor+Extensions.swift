@@ -10,10 +10,10 @@ import SwiftUI
 
 extension Ignite.Color {
     
-    init(_ resource: ColorResource, scheme: Ignite.ColorScheme) {
+    init(_ asset: ColorAsset, scheme: Ignite.ColorScheme) {
         var env = EnvironmentValues()
         env.colorScheme = (scheme == .light) ? .light : .dark
-        let color = SwiftUI.Color(resource).resolve(in: env)
+        let color = asset.swiftUIColor.resolve(in: env)
         self.init(
             red: Double(color.red),
             green: Double(color.green),

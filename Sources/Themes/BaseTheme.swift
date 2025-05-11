@@ -42,8 +42,8 @@ extension BaseTheme {
     
     var border: Ignite.Color { color(.Border.primary) }
     
-    private func color(_ resource: ColorResource) -> Ignite.Color {
-        return .init(resource, scheme: colorScheme)
+    private func color(_ asset: ColorAsset) -> Ignite.Color {
+        return .init(asset, scheme: colorScheme)
     }
 }
 
