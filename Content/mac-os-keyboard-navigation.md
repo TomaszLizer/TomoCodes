@@ -19,7 +19,7 @@ My typical breakpoint of such type is file deletion in Xcode. Depending on the f
   - No preselected option, cannot fully delete with keyboard.
 
 <center>
-    <video class="theme-aware-video" autoplay loop muted width="90%">
+    <video class="theme-aware-video" autoplay loop muted playsinline defaultmuted width="90%">
     <source src="/media/mac-os-keyboard-navigation/kn_disabled-light.mp4" type="video/mp4" media="(prefers-color-scheme:light)">
     <source src="/media/mac-os-keyboard-navigation/kn_disabled-dark.mp4" type="video/mp4" media="(prefers-color-scheme:dark)">
     <h4>Your browser does not support video tag</h4>
@@ -51,7 +51,7 @@ In order to use this feature you need to remember only three things: tab, space,
 Tap `tab` and you will jump to the next control, press `tab + shift` and you will go to the previous control instead. Then if you made your choice - click on `space` and highlighter control will be pressed same as if you have used cursor. Neat!
 
 <center>
-    <video class="theme-aware-video" autoplay loop muted width="90%">
+    <video class="theme-aware-video" autoplay loop muted playsinline defaultmuted width="90%">
     <source src="/media/mac-os-keyboard-navigation/kn_enabled-light.mp4" type="video/mp4" media="(prefers-color-scheme:light)">
     <source src="/media/mac-os-keyboard-navigation/kn_enabled-dark.mp4" type="video/mp4" media="(prefers-color-scheme:dark)">
     <h4>Your browser does not support video tag</h4>
