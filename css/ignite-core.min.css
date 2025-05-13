@@ -357,8 +357,8 @@ div.alert p:last-child {
     --bs-body-font-family: Nunito;
     --bs-headings-font-family: PressStart2P;
     --theme-container-lg: 700px;
-    --theme-container-xl: 700px;
-    --theme-container-xxl: 700px;
+    --theme-container-xl: 900px;
+    --theme-container-xxl: 900px;
     --syntax-highlight-theme: "xcode-light";
 }
 
@@ -377,6 +377,12 @@ div.alert p:last-child {
 @media (min-width: 700px) {
     .container {
     max-width: 700px;
+}
+}
+
+@media (min-width: 900px) {
+    .container {
+    max-width: 900px;
 }
 }
 
@@ -847,8 +853,8 @@ code, pre {
     --bs-body-font-family: Nunito;
     --bs-headings-font-family: PressStart2P;
     --theme-container-lg: 700px;
-    --theme-container-xl: 700px;
-    --theme-container-xxl: 700px;
+    --theme-container-xl: 900px;
+    --theme-container-xxl: 900px;
     --syntax-highlight-theme: "xcode-light";
 }
 
@@ -916,10 +922,18 @@ code, pre {
     --bs-body-font-family: Nunito;
     --bs-headings-font-family: PressStart2P;
     --theme-container-lg: 700px;
-    --theme-container-xl: 700px;
-    --theme-container-xxl: 700px;
+    --theme-container-xl: 900px;
+    --theme-container-xxl: 900px;
     --syntax-highlight-theme: "xcode-dark";
 }
 
 
 
+.animation-sWfAv-hover {
+    transform-style: preserve-3d;
+    transition: transform 0.35s cubic-bezier(0.4, 1.0, 0.0, 1.0);
+}
+
+.animation-sWfAv-hover:hover {
+    transform: scale(1.01);
+}
