@@ -37,7 +37,6 @@ You can enable this option in `System Preferences` **->** `Keyboard` **->** `Ke
         <source
             srcset="/media/mac-os-keyboard-navigation/keyboard-navigation-settings-dark.webp"
             media="(prefers-color-scheme: dark)"
-            alt="System settings - Keyboard navigation - dark"
         />
         <img
             src="/media/mac-os-keyboard-navigation/keyboard-navigation-settings-light.webp"

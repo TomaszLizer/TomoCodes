@@ -25,9 +25,9 @@ struct PostsGrid: HTML {
                         .transition(.scale(from: 1, to: 1.01), on: .hover)
                 }
                 .class("link-primary")
-                .class("col-lg-6", "col-12")
+                .width(12)
             }
         }
-        .class("row", "justify-content-between")
+        .class("justify-content-between")
     }
 }

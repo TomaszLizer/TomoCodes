@@ -26,6 +26,10 @@ struct ExampleSite: Site {
     
     var lightTheme: (any Theme)? = LightTheme()
     var darkTheme: (any Theme)? = DarkTheme()
+    
+    var syntaxHighlighterConfiguration = SyntaxHighlighterConfiguration(
+        languages: [.swift, .bash]
+    )
 
     var homePage = Home()
     var layout = MainLayout()

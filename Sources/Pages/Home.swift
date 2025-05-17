@@ -68,13 +68,9 @@ struct Home: StaticPage {
     
     private var latestPost: some HTML {
         Section {
-            Text("Latest post").font(.title2)
-            
-            if let latestPost = articles.typed(.blog).first {
-                PostsGrid(articles: [latestPost])
-            } else {
-                Text("Working on that :)").font(.title6)
-            }
+            Text("Latest posts").font(.title2)
+            let latestPosts = articles.typed(.blog)
+            PostsGrid(articles: latestPosts)
         }
         .padding(.vertical, .large)
     }

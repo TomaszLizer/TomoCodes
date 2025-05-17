@@ -31,7 +31,7 @@ struct BlogPostCard: HTML {
             .class("bg-body-secondary")
             .frame(width: .percent(100%))
         }
-        .frame(maxWidth: .px(500))
+        .frame(maxWidth: .px(600))
         .border(.dimGray)
         .cornerRadius(20)
         .clipped()
