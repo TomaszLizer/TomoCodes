@@ -1,5 +1,16 @@
-# IgniteStarter
+# TomoCodes
 
-This repository contains a starter project built using the [Ignite static site generator](https://github.com/twostraws/Ignite) – it includes just enough to get you going, so you should refer to the [IgniteSamples](https://github.com/twostraws/IgniteSamples) repository for detailed code samples.
+Hey there! 👋 This is my personal [site and blog](https://tomo.codes), all powered by Swift and the awesome [Ignite static site generator](https://github.com/twostraws/Ignite).
 
-You'll find small text file in each folder explaining what that folder does. Once you're happy with that, you should delete those files.
+## What’s this?
+- I’m Tomasz Lizer, and this is my little corner of the internet.
+- I write about Swift, Xcode, productivity tricks, and whatever else I find cool or useful.
+- I do code in Swift, hence this page is also written in Swift :)
+
+
+If you’re a Swift dev (or just curious), poke around! Maybe you’ll find something handy — or at least see how far you can push Swift outside of iOS apps.
+
+---
+
+This page started as an Ignite starter project. For more Ignite magic, check out [IgniteSamples](https://github.com/twostraws/IgniteSamples).
+
