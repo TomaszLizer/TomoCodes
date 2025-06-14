@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="For me Tasks where sort of black boxes which allowed me to switch to the async context of the app. Typically I assumed those will move me to some background Thread. I also love magic trick of constraining Task to MainActor:" />
+    <meta name="author" content="Tomasz Lizer" />
+    <meta name="generator" content="Ignite v0.6.0" />
+    <title>Task actor inheritance – TomoCodes</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/prism-xcode-dark.css" rel="stylesheet" data-highlight-theme="xcode-dark" />
+    <link href="/css/prism-xcode-light.css" rel="stylesheet" data-highlight-theme="xcode-light" />
+    <link href="/css/prism-plugins.css" rel="stylesheet" />
+    <link href="/css/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="/css/ignite-core.min.css" rel="stylesheet" />
+    <link href="https://tomo.codes/swift-task-actor-inheritance" rel="canonical" />
+    <script>(function() {
+    function getThemePreference() {
+        return localStorage.getItem('custom-theme') || 'auto';
+    }
+
+    function applyTheme(themeID) {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const lightThemeID = document.documentElement.getAttribute('data-light-theme') || 'light';
+        const darkThemeID = document.documentElement.getAttribute('data-dark-theme') || 'dark';
+        const actualThemeID = themeID === 'auto' ? (prefersDark ? darkThemeID : lightThemeID) : themeID;
+
+        document.documentElement.setAttribute('data-bs-theme', actualThemeID);
+        document.documentElement.setAttribute('data-theme-state', themeID);
+    }
+
+    function applySyntaxTheme() {
+        const syntaxTheme = getComputedStyle(document.documentElement)
+            .getPropertyValue('--syntax-highlight-theme').trim().replace(/"/g, '');
+
+        if (!syntaxTheme) return;
+
+        document.querySelectorAll('link[data-highlight-theme]').forEach(link => {
+            link.setAttribute('disabled', 'disabled');
+        });
+
+        const themeLink = document.querySelector(`link[data-highlight-theme="${syntaxTheme}"]`);
+        if (themeLink) {
+            themeLink.removeAttribute('disabled');
+        }
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        const currentTheme = getThemePreference();
+        if (currentTheme === 'auto') {
+            applyTheme('auto');
+            applySyntaxTheme();
+        }
+    });
+
+    const savedTheme = getThemePreference();
+    applyTheme(savedTheme);
+    applySyntaxTheme();
+})();
+</script>
+    <meta property="og:site_name" content="TomoCodes" />
+    <meta property="og:image" content="/media/swift-task-actor-inheritance/header.webp" />
+    <meta name="twitter:image" content="/media/swift-task-actor-inheritance/header.webp" />
+    <meta property="og:title" content="Task actor inheritance" />
+    <meta name="twitter:title" content="Task actor inheritance" />
+    <meta property="og:description" content="For me Tasks where sort of black boxes which allowed me to switch to the async context of the app. Typically I assumed those will move me to some background Thread. I also love magic trick of constraining Task to MainActor:" />
+    <meta name="twitter:description" content="For me Tasks where sort of black boxes which allowed me to switch to the async context of the app. Typically I assumed those will move me to some background Thread. I also love magic trick of constraining Task to MainActor:" />
+    <meta property="og:url" content="https://tomo.codes/swift-task-actor-inheritance" />
+    <meta name="twitter:domain" content="tomo.codes" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:dnt" content="on" />
+    <link href="/media/favicons/favicon.ico" rel="icon" />
+    <link sizes="96x96" type="image/png" href="/media/favicons/favicon-96x96.png" rel="icon" />
+    <link sizes="180x180" href="/media/favicons/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="/media/favicons/site.webmanifest" rel="manifest" />
+    <link href="/css/typewriter-cursor.css" rel="stylesheet" />
+    <meta name="theme-color" content="rgb(245 240 230)" media="(prefers-color-scheme: light" />
+    <meta name="theme-color" content="rgb(43 34 34)" media="(prefers-color-scheme: dark" />
+    <!-- GoatCounter Analytics --> 
+    <script data-goatcounter="https://tomo.goatcounter.com/count" async src="//gc.zgo.at/count.js">
+</script>
+  </head>
+  <body class="pb-3 container" style="padding-top: 120px">
+    <header>
+      <nav class="fixed-top material-ultra-thin bg-body-secondary bg-opacity-50 navbar navbar-expand-md">
+        <div class="container flex-wrap flex-lg-nowrap">
+          <div class="me-2 me-md-auto">
+            <a href="/" class="d-inline-flex align-items-center navbar-brand"><img src="/media/TomoCodes%20Icon.webp" alt="Tomo Codes Icon" class="fs-2" style="height: 60px" /><span class="lead text-body" style="font-weight: 400; font-family: 'PressStart2P'">TomoCodes</span></a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="ig-main-content">
+      <div>
+        <div class="pb-4 hstack gap-3">
+          <span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis rounded-pill">concurrency</span>
+          <span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis rounded-pill">swift</span>
+          <div class="ms-auto"></div>
+          <div class="mb-0 align-self-start" style="color: rgb(128 128 128 / 100%)">
+            <div class="color-inherit vstack">
+              <div class="mb-0 align-self-end">
+                14 June 2025 · 4 min read
+              </div>
+            </div>
+          </div>
+        </div>
+        <h1 style="line-height: 1.2">Task actor inheritance</h1>
+        <h5>Where do I run again?</h5>
+        <img src="/media/swift-task-actor-inheritance/header.webp" alt="" class="img-fluid my-3" style="border-radius: 20px; width: 100.0%" />
+        <p></p>
+        <p>For me Tasks where sort of black boxes which allowed me to switch to the async context of the app. Typically I assumed those will move me to some background Thread. I also love magic trick of constraining Task to <code>MainActor</code>:</p>
+        <pre><code class="language-swift">Task { @MainActor in [...] }
+</code></pre>
+        <p>And there was this vague Task actor context inheritance (+ do not ever use .detached!).</p>
+        <p>So here we are in WWDC25 period and I started looking into concurrency related sessions. Upcoming features of default actor isolation and approachable concurrency seemed to make it simpler, but different at the same time. So I started experimenting with Tasks trying to understand them little bit better.</p>
+        <h2> Actor context inheritance </h2> You may have heard that tasks inherits calling actor context and that you should not use `Task.detached` unless explicitly needing to dispatch with specified priority no matter what is the calling context. But how does this context gets inherited, why does it even matter? 
+        <p>Problem here is reasoning about the code execution and possibilities of <code>race conditions</code>. On its own, Task will start asynchronous work on arbitrary Thread (using cooperative thread pool). If we could pass context of calling actor to such task we would then make things simpler to reason about, especially from perspective of race conditions. Here comes our actor context inheritance. Whenever we call task from within the context of an actor (eg MainActor, by using function annotation) task will inherit its context. This in turn assure its callback will be dispatched using our inherited (Main) actor. If we however add any layer between actor context and Task creation - we loose our actor inheritance. This part boggled me for a while…</p>
+        <p>Key factor here (and whole point of complete concurrency checking) is that those things happen at <code>compile time</code>. For me that was <strong>Aha! moment</strong> and something that helped me understand what is going on and what has just changed in <code>Swift 6.2</code>.</p>
+        <p>Tasks do inherit calling actor context, but do so in a compile time, not through runtime. After some consideration it becomes obvious - that is the only way to have reliable and predictable behavior. This also allows to provide compile time safety and certainty when it comes to race conditions. All of this happens because of explicitly marked callback parameter: <a href="https://github.com/swiftlang/swift/blob/9a0a831b0198e1b794a66316487aacef3d692ca4/docs/ReferenceGuides/UnderscoredAttributes.md#_inheritactorcontext">@_inheritActorContext</a>.</p>
+        <p>Below you can find simple example that shows exactly that:</p>
+        <pre><code class="language-swift">final class IsolationCheck {
+    @MainActor
+    var isolated = false
+    
+    @MainActor
+    func runIsolated() {
+        Task {
+            isolated.toggle()
+            Task {
+                isolated.toggle()
+            }
+            Task.detached {
+                self.isolated.toggle() // ❌ error:
+                // Main actor-isolated property 'isolated'
+                // can not be mutated from a nonisolated context
+            }
+        }
+    }
+    
+    nonisolated func runNonIsolated() {
+        Task {
+            isolated.toggle() // ❌ error:
+            // Main actor-isolated property 'isolated'
+            // can not be mutated from a nonisolated context
+            Task { @MainActor in
+                isolated.toggle()
+                Task {
+                    isolated.toggle()
+                }
+            }
+        }
+    }
+}
+</code></pre>
+        <p>See that the code above allows me to interact with MainActor isolated property within the task if this task is spawned from within the context of MainActor (which it inherits). In case I would switch to detached task or did spawn Task outside of MainActor context (see <code>nonisolated func runNonIsolated()</code>) I do end up with compiler error. Also if I would fix that, code in that task will run on arbitrary Thread and not on MainActor thread.</p>
+        <p>All of the above allowed me to understand that there are really two possibilities on how the task will run:</p>
+        <ul>
+          <li>Either on specific actor through inheritance of its context.</li>
+          <li>Or outside any actor on some thread from cooperative thread pool.</li>
+        </ul>
+        <center> 
+          <img src="/media/swift-task-actor-inheritance/same-same.webp" alt="Same same meme" width="90%" /> 
+        </center> 
+        <p>Latest concurrency changes does not affect it at all - behavior stays the same. However since everything gets annotated as MainActor by default, we will most probably end up with our Tasks inheriting this context. You still need to remember however, that there is possibility to spawn a Task that ends up outside of MainActor without @concurrent annotation. This can happen if you create Task from <code>nonisolated</code> function, be it <code>async</code> or <code>sync</code>. This is due to nature of actor context inheritance: at compile time.</p>
+        <p>That’s it!<br /> You can also check out <a href="https://github.com/TomaszLizer/swift-concurrency-explorations/tree/Task-actor-inheritance">Task-actor-inheritance</a> branch in my repo where I explored those Task behaviors in example iOS app.</p>
+        <center> 
+          <picture> 
+            <source srcset="/media/swift-task-actor-inheritance/tasks-explorations-app-dark.webp" media="(prefers-color-scheme: dark)" /> 
+            <img src="/media/swift-task-actor-inheritance/tasks-explorations-app-light.webp" alt="Site generated using swift run and SwiftGen plugin" /> 
+          </picture> 
+        </center> 
+        <p></p>
+        <div class="py-4">
+          <h1>Comments</h1>
+          <div hidden id="cusdis_thread" data-host="https://cusdis.com" data-app-id="cb59cfd6-8d96-40c3-93d8-42dc400a714b" data-page-id="swift-task-actor-inheritance" data-page-url="https://tomo.codes/swift-task-actor-inheritance" data-page-title="Task actor inheritance"></div>
+          <script src="/scripts/cusdis-theme-support.js"></script>
+        </div>
+        <script src="/scripts/theme-aware-video.js"></script>
+      </div>
+    </div>
+    <div class="vstack gap-3">
+      <div class="mb-0 align-self-center">
+        <h1 style="margin: 0px"><a target="_blank" rel="noopener" href="https://github.com/TomaszLizer" class="m-2 link-primary"><i class="bi-github"></i></a><a target="_blank" rel="noopener" href="https://linkedin.com/in/tomasz-lizer-9b390bb4/" class="m-2 link-primary"><i class="bi-linkedin"></i></a><a target="_blank" rel="noopener" href="https://instagram.com/engineer_pedi" class="m-2 link-primary"><i class="bi-instagram"></i></a></h1>
+      </div>
+      <div class="mb-0 align-self-center" style="display: inline-block">
+        <div class="vstack">
+          <p class="mb-0 align-self-center">Copyright © Tomasz Lizer 2025</p>
+          <p class="mb-0 align-self-center">Created in Swift with <a target="_blank" rel="noopener" href="https://github.com/twostraws/Ignite" class="link-plain">Ignite</a></p>
+        </div>
+      </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/syntax-highlighting.js"></script>
+    <script src="/js/ignite-core.js"></script>
+  </body>
+</html>
