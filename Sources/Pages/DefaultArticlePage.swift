@@ -28,6 +28,7 @@ struct DefaultArticlePage: ArticlePage {
                 image
                     .cornerRadius(20)
                     .margin([.top, .bottom], .medium)
+                    .frame(width: .percent(100%))
             }
 
             Text(article.text)
