@@ -1,10 +1,9 @@
 ---
-type: blog
 title: Tab, Space, Done
 subtitle: Stay in the flow with macOS Keyboard navigation
 id: mac_os_keyboard_navigation
 tags: tip, productivity, macos
-image: /media/mac-os-keyboard-navigation/header.webp
+image: /media/blog/mac-os-keyboard-navigation/header.webp
 imageDescription: "Cozy 16-bit pixel-art banner showing three oversized keyboard keys: tab, shift, space"
 date: 2025-05-13
 lastModified: 2025-05-13
@@ -20,8 +19,8 @@ My typical breakpoint of such type is file deletion in Xcode. Depending on the f
 
 <center>
     <video class="theme-aware-video" autoplay loop muted playsinline defaultmuted width="90%">
-    <source src="/media/mac-os-keyboard-navigation/kn_disabled-light.mp4" type="video/mp4" media="(prefers-color-scheme:light)">
-    <source src="/media/mac-os-keyboard-navigation/kn_disabled-dark.mp4" type="video/mp4" media="(prefers-color-scheme:dark)">
+    <source src="/media/blog/mac-os-keyboard-navigation/kn_disabled-light.mp4" type="video/mp4" media="(prefers-color-scheme:light)">
+    <source src="/media/blog/mac-os-keyboard-navigation/kn_disabled-dark.mp4" type="video/mp4" media="(prefers-color-scheme:dark)">
     <h4>Your browser does not support video tag</h4>
     </video>
 </center>
@@ -35,11 +34,11 @@ You can enable this option in `System Preferences` **->** `Keyboard` **->** `Ke
 <center>
     <picture>
         <source
-            srcset="/media/mac-os-keyboard-navigation/keyboard-navigation-settings-dark.webp"
+            srcset="/media/blog/mac-os-keyboard-navigation/keyboard-navigation-settings-dark.webp"
             media="(prefers-color-scheme: dark)"
         />
         <img
-            src="/media/mac-os-keyboard-navigation/keyboard-navigation-settings-light.webp"
+            src="/media/blog/mac-os-keyboard-navigation/keyboard-navigation-settings-light.webp"
             alt="System settings - Keyboard navigation"
             width="90%"
         />
@@ -51,8 +50,8 @@ Tap `tab` and you will jump to the next control, press `tab + shift` and you w
 
 <center>
     <video class="theme-aware-video" autoplay loop muted playsinline defaultmuted width="90%">
-    <source src="/media/mac-os-keyboard-navigation/kn_enabled-light.mp4" type="video/mp4" media="(prefers-color-scheme:light)">
-    <source src="/media/mac-os-keyboard-navigation/kn_enabled-dark.mp4" type="video/mp4" media="(prefers-color-scheme:dark)">
+    <source src="/media/blog/mac-os-keyboard-navigation/kn_enabled-light.mp4" type="video/mp4" media="(prefers-color-scheme:light)">
+    <source src="/media/blog/mac-os-keyboard-navigation/kn_enabled-dark.mp4" type="video/mp4" media="(prefers-color-scheme:dark)">
     <h4>Your browser does not support video tag</h4>
     </video>
 </center>

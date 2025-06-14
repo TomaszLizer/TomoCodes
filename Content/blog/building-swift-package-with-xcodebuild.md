@@ -1,9 +1,8 @@
 ---
-type: blog
 id: building-swift-package-with-xcodebuild
 title: Packages, resources, and the fine print
 subtitle: How to build and run Swift Package using xcodebuild
-image: /media/building-swift-package-with-xcodebuild/header.webp
+image: /media/blog/building-swift-package-with-xcodebuild/header.webp
 tags: tip, swift package, xcodebuild
 date: 2025-05-16
 lastModified: 2025-05-16
@@ -38,11 +37,11 @@ It quickly turns out that code compiles and even runs without any interruptions,
 <center>
     <picture>
         <source
-            srcset="/media/building-swift-package-with-xcodebuild/website-broken-colors-dark.webp"
+            srcset="/media/blog/building-swift-package-with-xcodebuild/website-broken-colors-dark.webp"
             media="(prefers-color-scheme: dark)"
         />
         <img
-            src="/media/building-swift-package-with-xcodebuild/website-broken-colors-light.webp"
+            src="/media/blog/building-swift-package-with-xcodebuild/website-broken-colors-light.webp"
             alt="Site generated using swift run and SwiftGen plugin"
             width="90%"
         />

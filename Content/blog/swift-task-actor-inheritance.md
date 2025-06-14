@@ -1,10 +1,9 @@
 ---
-type: blog
 title: Task actor inheritance
 subtitle: Where do I run again?
 id: swift-task-actor-inheritance
 tags: concurrency, swift
-image: /media/swift-task-actor-inheritance/header.webp
+image: /media/blog/swift-task-actor-inheritance/header.webp
 imageDescription: "Cozy 16-bit pixel-art banner showing person in front of the computer with bubbles floating around monitor connected by thin line"
 date: 2025-06-14
 lastModified: 2025-06-14
@@ -76,7 +75,7 @@ All of the above allowed me to understand that there are really two possibilitie
 
 <center>
     <img
-        src="/media/swift-task-actor-inheritance/same-same.webp"
+        src="/media/blog/swift-task-actor-inheritance/same-same.webp"
         alt="Same same meme"
         width="90%"
     />
@@ -90,11 +89,11 @@ You can also check out [Task-actor-inheritance](https://github.com/TomaszLizer/s
 <center>
     <picture>
         <source
-            srcset="/media/swift-task-actor-inheritance/tasks-explorations-app-dark.webp"
+            srcset="/media/blog/swift-task-actor-inheritance/tasks-explorations-app-dark.webp"
             media="(prefers-color-scheme: dark)"
         />
         <img
-            src="/media/swift-task-actor-inheritance/tasks-explorations-app-light.webp"
+            src="/media/blog/swift-task-actor-inheritance/tasks-explorations-app-light.webp"
             alt="Site generated using swift run and SwiftGen plugin"
         />
     </picture>

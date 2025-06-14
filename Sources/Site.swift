@@ -34,4 +34,5 @@ struct ExampleSite: Site {
     var homePage = Home()
     var layout = MainLayout()
     var articlePages: [any ArticlePage] = [DefaultArticlePage()]
+    var staticPages: [any StaticPage] = RedirectPage.redirects()
 }
