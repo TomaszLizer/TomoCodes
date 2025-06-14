@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="As I am working on this site (which is build using Ignite) I am encountering interesting problems I haven’t faced on a daily basis working with projects in Xcode. Initially I have started working using Xcode, however as I needed to interact with different file types (like markdown) I finally switched to Visual Studio Code. Before I did that however I had already sprinkled this project with Xcode conveniences. One of those especially being assets catalog (*.xcassets). I was not only blessed with visual format for working with colors, but at the same time brought compile time safety with ColorResource. Cats and rainbows everywhere!" />
+    <meta name="author" content="Tomasz Lizer" />
+    <meta name="generator" content="Ignite v0.6.0" />
+    <title>Packages, resources, and the fine print – TomoCodes</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/prism-xcode-dark.css" rel="stylesheet" data-highlight-theme="xcode-dark" />
+    <link href="/css/prism-xcode-light.css" rel="stylesheet" data-highlight-theme="xcode-light" />
+    <link href="/css/prism-plugins.css" rel="stylesheet" />
+    <link href="/css/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="/css/ignite-core.min.css" rel="stylesheet" />
+    <link href="https://tomo.codes/blog/building-swift-package-with-xcodebuild" rel="canonical" />
+    <script>(function() {
+    function getThemePreference() {
+        return localStorage.getItem('custom-theme') || 'auto';
+    }
+
+    function applyTheme(themeID) {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const lightThemeID = document.documentElement.getAttribute('data-light-theme') || 'light';
+        const darkThemeID = document.documentElement.getAttribute('data-dark-theme') || 'dark';
+        const actualThemeID = themeID === 'auto' ? (prefersDark ? darkThemeID : lightThemeID) : themeID;
+
+        document.documentElement.setAttribute('data-bs-theme', actualThemeID);
+        document.documentElement.setAttribute('data-theme-state', themeID);
+    }
+
+    function applySyntaxTheme() {
+        const syntaxTheme = getComputedStyle(document.documentElement)
+            .getPropertyValue('--syntax-highlight-theme').trim().replace(/"/g, '');
+
+        if (!syntaxTheme) return;
+
+        document.querySelectorAll('link[data-highlight-theme]').forEach(link => {
+            link.setAttribute('disabled', 'disabled');
+        });
+
+        const themeLink = document.querySelector(`link[data-highlight-theme="${syntaxTheme}"]`);
+        if (themeLink) {
+            themeLink.removeAttribute('disabled');
+        }
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        const currentTheme = getThemePreference();
+        if (currentTheme === 'auto') {
+            applyTheme('auto');
+            applySyntaxTheme();
+        }
+    });
+
+    const savedTheme = getThemePreference();
+    applyTheme(savedTheme);
+    applySyntaxTheme();
+})();
+</script>
+    <meta property="og:site_name" content="TomoCodes" />
+    <meta property="og:image" content="/media/blog/building-swift-package-with-xcodebuild/header.webp" />
+    <meta name="twitter:image" content="/media/blog/building-swift-package-with-xcodebuild/header.webp" />
+    <meta property="og:title" content="Packages, resources, and the fine print" />
+    <meta name="twitter:title" content="Packages, resources, and the fine print" />
+    <meta property="og:description" content="As I am working on this site (which is build using Ignite) I am encountering interesting problems I haven’t faced on a daily basis working with projects in Xcode. Initially I have started working using Xcode, however as I needed to interact with different file types (like markdown) I finally switched to Visual Studio Code. Before I did that however I had already sprinkled this project with Xcode conveniences. One of those especially being assets catalog (*.xcassets). I was not only blessed with visual format for working with colors, but at the same time brought compile time safety with ColorResource. Cats and rainbows everywhere!" />
+    <meta name="twitter:description" content="As I am working on this site (which is build using Ignite) I am encountering interesting problems I haven’t faced on a daily basis working with projects in Xcode. Initially I have started working using Xcode, however as I needed to interact with different file types (like markdown) I finally switched to Visual Studio Code. Before I did that however I had already sprinkled this project with Xcode conveniences. One of those especially being assets catalog (*.xcassets). I was not only blessed with visual format for working with colors, but at the same time brought compile time safety with ColorResource. Cats and rainbows everywhere!" />
+    <meta property="og:url" content="https://tomo.codes/blog/building-swift-package-with-xcodebuild" />
+    <meta name="twitter:domain" content="tomo.codes" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:dnt" content="on" />
+    <link href="/media/favicons/favicon.ico" rel="icon" />
+    <link sizes="96x96" type="image/png" href="/media/favicons/favicon-96x96.png" rel="icon" />
+    <link sizes="180x180" href="/media/favicons/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="/media/favicons/site.webmanifest" rel="manifest" />
+    <link href="/css/typewriter-cursor.css" rel="stylesheet" />
+    <meta name="theme-color" content="rgb(245 240 230)" media="(prefers-color-scheme: light" />
+    <meta name="theme-color" content="rgb(43 34 34)" media="(prefers-color-scheme: dark" />
+    <!-- GoatCounter Analytics --> 
+    <script data-goatcounter="https://tomo.goatcounter.com/count" async src="//gc.zgo.at/count.js">
+</script>
+  </head>
+  <body class="pb-3 container" style="padding-top: 120px">
+    <header>
+      <nav class="fixed-top material-ultra-thin bg-body-secondary bg-opacity-50 navbar navbar-expand-md">
+        <div class="container flex-wrap flex-lg-nowrap">
+          <div class="me-2 me-md-auto">
+            <a href="/" class="d-inline-flex align-items-center navbar-brand"><img src="/media/TomoCodes%20Icon.webp" alt="Tomo Codes Icon" class="fs-2" style="height: 60px" /><span class="lead text-body" style="font-weight: 400; font-family: 'PressStart2P'">TomoCodes</span></a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="ig-main-content">
+      <div>
+        <div class="pb-4 hstack gap-3">
+          <span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis rounded-pill">tip</span>
+          <span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis rounded-pill">swift package</span>
+          <span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis rounded-pill">xcodebuild</span>
+          <div class="ms-auto"></div>
+          <div class="mb-0 align-self-start" style="color: rgb(128 128 128 / 100%)">
+            <div class="color-inherit vstack">
+              <div class="mb-0 align-self-end">
+                16 May 2025 · 5 min read
+              </div>
+            </div>
+          </div>
+        </div>
+        <h1 style="line-height: 1.2">Packages, resources, and the fine print</h1>
+        <h5>How to build and run Swift Package using xcodebuild</h5>
+        <img src="/media/blog/building-swift-package-with-xcodebuild/header.webp" alt="" class="img-fluid my-3" style="border-radius: 20px; width: 100.0%" />
+        <p></p>
+        <p>As I am working on this site (which is build using <a href="https://github.com/twostraws/Ignite">Ignite</a>) I am encountering interesting problems I haven’t faced on a daily basis working with projects in Xcode. Initially I have started working using Xcode, however as I needed to interact with different file types (like markdown) I finally switched to Visual Studio Code. Before I did that however I had already sprinkled this project with Xcode conveniences. One of those especially being assets catalog (<code>*.xcassets</code>). I was not only blessed with visual format for working with colors, but at the same time brought compile time safety with <code>ColorResource</code>. Cats and rainbows everywhere!</p>
+        <p>My happiness disappeared quickly when I tried to run my project from command line using <code>swift run</code>. I was immediately surrounded by errors like the one below:</p>
+        <pre><code class="language-bash">error: type 'ColorResource' has no member 'accent'
+</code></pre>
+        <p>My first thought was: <em>“but asset catalogs are supported in packages”</em>. I had even confirmed my assumptions with <a href="https://developer.apple.com/documentation/xcode/bundling-resources-with-a-swift-package">official documentation</a> from Apple. My second thought then was: <em>“right - must be some issue with resource processing, lemme add that”</em>. And so I did. Shiny new line in Package.swift: <code>resources: [.process("Resources/Colors.xcassets")]</code></p>
+        <p>And I was happy with it. But <code>swift run</code> was not. Still was it angry at me and I didn’t ever wanted to bother that poor fella.</p>
+        <p>So I started searching, reading, looking through obscure parts of docs and xcode release notes. Pieces started falling into place. Common motive here was <code>xcode</code>. But hey - was I still naive at that point. Given lack of information about <code>ColorResource</code> besides ones associated with Xcode I assumed it is Xcode only feature to autogenerate those nice accessors. Shame, but well - there is our old buddy <a href="https://github.com/SwiftGen/SwiftGen">SwiftGen</a> and I like him a lot!</p>
+        <p>And I integrated SwiftGen plugin - this time two new additions to package definition: SwiftGen as package dependency and a plugin of the target. Also needed to create customized stencil templates (as the bundled ones caused all sort of errors) and voila. Almost works. Obviously that couldn’t end up being simple and again wild errors appeared.</p>
+        <pre><code class="language-bash">error: a prebuild command cannot use executables built from source, including executable target 'swiftgen'
+</code></pre>
+        <p>Error itself does not made much sense since <code>swiftgen</code> is a binaryTarget hence no building from source occurs. I was unable to find any meaningful solution, so started tinkering. In the end it seems like Xcode 16.3 (and hence Swift 6.1) are to blame. Dropping back to Xcode 16.2 and all is fine. Here I ended up just using SwiftGenPlugin CLI with and committing generated files to repo.</p>
+        <pre><code class="language-bash">swift package --allow-writing-to-package-directory generate-code-for-resources
+</code></pre>
+        <p>SwiftGen integrated, code compiles and runs - <strong>victory</strong> - one would wish, but not so fast… Again…</p>
+        <p>It quickly turns out that code compiles and even runs without any interruptions, however page does not look right.</p>
+        <center> 
+          <picture> 
+            <source srcset="/media/blog/building-swift-package-with-xcodebuild/website-broken-colors-dark.webp" media="(prefers-color-scheme: dark)" /> 
+            <img src="/media/blog/building-swift-package-with-xcodebuild/website-broken-colors-light.webp" alt="Site generated using swift run and SwiftGen plugin" width="90%" /> 
+          </picture> 
+        </center> 
+        <p>After building site with <code>swift run</code> all colors seems to not exist. And to my surprise it does not cause a crash - just all values are zeros.</p>
+        <p>At this stage I understood and accepted my fate. I was doomed and forced to use Xcode. Or xcode build system… And all of that time I was missing the <em>fine print</em>: Xcode. Every piece of the documentation that related to asset folders, auto-generated <code>ColorResource</code> etc - it was all in the context of <code>Xcode</code>.</p>
+        <p>So here it is, topic of this article: how to build Swift Package with xcodebuild? Command required to do that is long and cumbersome, but we don’t need to really type it every time. Instead we can just have it as a shell script. So here we go: <code>touch buildAndRun.sh</code></p>
+        <pre><code class="language-bash">#!/bin/bash
+appName="TomoCodes"
+configuration="debug"
+derivedDataPath=".build/derivedData"
+    
+# Build Swift Code
+xcodebuild \
+    -configuration $configuration \
+    -scheme "$appName" \
+    -sdk macosx \
+    -destination 'platform=macOS' \
+    -derivedDataPath "$derivedDataPath"
+   
+# Run Site generation
+$derivedDataPath/Build/Products/$configuration/$appName
+</code></pre>
+        <p>Firstly, we do need to build and run in separate steps. In fact xcodebuild only allows us to build the package as the name implies. Later we need to run our build artifacts. In my case it is fairly simple.</p>
+        <ol>
+          <li>Build main target of my Ignite project, for that I need to specify few things:
+            <ul>
+              <li><code>configuration</code> - <code>debug</code> or <code>release</code></li>
+              <li><code>scheme</code> - this will be name of the target you wish to build</li>
+              <li><code>sdk</code> - for me this is macosx
+                <ul>
+                  <li>list available sdks using <code>xcodebuild build -scheme 
+                      <your-scheme>
+                         -showsdks
+                      </your-scheme></code></li>
+                  <li>go generic (<code>macosx</code>) or constrain to more specific sdk (<code>macosx15.4</code>)</li>
+                </ul></li>
+              <li><code>destination</code> - this will depend on the sdk chosen, tells where you will run your app
+                <ul>
+                  <li>list available destinations using <code>xcodebuild build -scheme 
+                      <your-scheme>
+                         -showdestinations
+                      </your-scheme></code></li>
+                  <li>go generic (<code>platform=macOS</code>) or constrain to specific destination (<code>platform=macOS,arch=arm64</code>)</li>
+                </ul></li>
+              <li><code>derivedDataPath</code> - key argument - it allows us to easily find and run build products. It can be full or relative path.</li>
+            </ul></li>
+          <li>Next step is to actually run Product of the build. For me it is simple as I just run executable. In case of iOS you will also have to select specific destination, install app and run it.</li>
+        </ol>
+        <p>Now this little script reminds me of my mistake, but alongside that ride comes some learnings. For me main one would be: never ever trust files with <code>xc</code> file extension prefix. Most probably in the future I will look into updating my color setup not to depend on xcodebuild, but for now at least I can conveniently work from VS Code.</p>
+        <p></p>
+        <div class="py-4">
+          <h1>Comments</h1>
+          <div hidden id="cusdis_thread" data-host="https://cusdis.com" data-app-id="cb59cfd6-8d96-40c3-93d8-42dc400a714b" data-page-id="building-swift-package-with-xcodebuild" data-page-url="https://tomo.codes/blog/building-swift-package-with-xcodebuild" data-page-title="Packages, resources, and the fine print"></div>
+          <script src="/scripts/cusdis-theme-support.js"></script>
+        </div>
+        <script src="/scripts/theme-aware-video.js"></script>
+      </div>
+    </div>
+    <div class="vstack gap-3">
+      <div class="mb-0 align-self-center">
+        <h1 style="margin: 0px"><a target="_blank" rel="noopener" href="https://github.com/TomaszLizer" class="m-2 link-primary"><i class="bi-github"></i></a><a target="_blank" rel="noopener" href="https://linkedin.com/in/tomasz-lizer-9b390bb4/" class="m-2 link-primary"><i class="bi-linkedin"></i></a><a target="_blank" rel="noopener" href="https://instagram.com/engineer_pedi" class="m-2 link-primary"><i class="bi-instagram"></i></a></h1>
+      </div>
+      <div class="mb-0 align-self-center" style="display: inline-block">
+        <div class="vstack">
+          <p class="mb-0 align-self-center">Copyright © Tomasz Lizer 2025</p>
+          <p class="mb-0 align-self-center">Created in Swift with <a target="_blank" rel="noopener" href="https://github.com/twostraws/Ignite" class="link-plain">Ignite</a></p>
+        </div>
+      </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/syntax-highlighting.js"></script>
+    <script src="/js/ignite-core.js"></script>
+  </body>
+</html>
