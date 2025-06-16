@@ -4,6 +4,9 @@ import Ignite
 struct Home: StaticPage {
     
     let title = "Home"
+    let layout = MainLayout {
+        HeroSection.requiredMeta
+    }
     
     @Environment(\.articles)
     private var articles

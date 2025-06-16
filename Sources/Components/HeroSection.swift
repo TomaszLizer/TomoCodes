@@ -9,6 +9,10 @@ import Ignite
 
 struct HeroSection: HTML {
     
+    static var requiredMeta: MetaLink {
+        MetaLink(href: "/css/typewriter-cursor.css", rel: .stylesheet)
+    }
+    
     var title: String
     var subtitle: String
     /// List of strings that will be appended to subtitle with typewriter effect.
