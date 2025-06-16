@@ -7,10 +7,25 @@
 
 import Ignite
 
+@MainActor
+enum ThemeAwareVideo {
+    static var script: Script { Script(file: "/scripts/theme-aware-video.js") }
+    
+    static func isIn(_ article: Article) -> Bool {
+        article.text.contains("theme-aware-video")
+    }
+}
+
 struct DefaultArticlePage: ArticlePage {
     
-    let layout = MainLayout()
-    
+    var layout: MainLayout {
+        MainLayout(deferredContent: {
+            if ThemeAwareVideo.isIn(article) {
+                ThemeAwareVideo.script
+            }
+        })
+    }
+
     var body: some BodyElement {
         Section {
             tagsAndDate
@@ -37,8 +52,6 @@ struct DefaultArticlePage: ArticlePage {
             if let id = article.id {
                 CusdisCommentsSection(id: id)
             }
-            
-            Script(file: "/scripts/theme-aware-video.js")
         }
     }
     
