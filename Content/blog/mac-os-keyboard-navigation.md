@@ -1,7 +1,8 @@
 ---
+id: mac_os_keyboard_navigation
 title: Tab, Space, Done
 subtitle: Stay in the flow with macOS Keyboard navigation
-id: mac_os_keyboard_navigation
+description: How to enable and use Keyboard Navigation on macOS to stay in the flow
 tags: tip, productivity, macos
 image: /media/blog/mac-os-keyboard-navigation/header.webp
 imageDescription: "Cozy 16-bit pixel-art banner showing three oversized keyboard keys: tab, shift, space"

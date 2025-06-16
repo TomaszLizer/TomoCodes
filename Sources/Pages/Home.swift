@@ -4,6 +4,11 @@ import Ignite
 struct Home: StaticPage {
     
     let title = "Home"
+    let layout = MainLayout {
+        HeroSection.requiredMeta
+    } deferredContent: {
+        HeroSection.requiredScript
+    }
     
     @Environment(\.articles)
     private var articles

@@ -2,6 +2,7 @@
 id: building-swift-package-with-xcodebuild
 title: Packages, resources, and the fine print
 subtitle: How to build and run Swift Package using xcodebuild
+description: How to build and run Swift Package with xcodebuild to support resources like xcassets
 image: /media/blog/building-swift-package-with-xcodebuild/header.webp
 tags: tip, swift package, xcodebuild
 date: 2025-05-16

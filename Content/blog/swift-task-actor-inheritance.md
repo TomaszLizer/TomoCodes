@@ -1,7 +1,8 @@
 ---
+id: swift-task-actor-inheritance
 title: Task actor inheritance
 subtitle: Where do I run again?
-id: swift-task-actor-inheritance
+description: Understanding Task actor context inheritance in Swift concurrency
 tags: concurrency, swift
 image: /media/blog/swift-task-actor-inheritance/header.webp
 imageDescription: "Cozy 16-bit pixel-art banner showing person in front of the computer with bubbles floating around monitor connected by thin line"

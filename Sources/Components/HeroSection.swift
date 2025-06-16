@@ -9,6 +9,15 @@ import Ignite
 
 struct HeroSection: HTML {
     
+    static var requiredMeta: MetaLink {
+        MetaLink(href: "/css/typewriter-cursor.css", rel: .stylesheet)
+    }
+    
+    static var requiredScript: Script {
+        Script(file: URL(static: "/scripts/typewriter.js"))
+    }
+        
+    
     var title: String
     var subtitle: String
     /// List of strings that will be appended to subtitle with typewriter effect.
@@ -17,7 +26,7 @@ struct HeroSection: HTML {
     var body: some HTML {
         Section {
             Text(title)
-                .font(.title2)
+                .font(.title1)
             
             Text{
                 subtitle
@@ -30,11 +39,8 @@ struct HeroSection: HTML {
                         .class("cursor")
                 }
             }
-            .font(.title6)
-            
-            if typewriterData?.isEmpty == false {
-                Script(file: URL(static: "/scripts/typewriter.js"))
-            }
+            .font(.pressStart2P)
+            .font(.lead)
         }
         .padding(.top, .small)
         .padding(.bottom, .large)
