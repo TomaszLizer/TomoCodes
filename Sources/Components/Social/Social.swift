@@ -16,11 +16,20 @@ enum Social: String, CaseIterable, Sendable, InlineElement {
             .target(.newWindow)
             .relationship(.noOpener)
             .role(.primary)
+            .aria(.label, "Social icon for \(name)")
             .margin(.small)
     }
     
     var icon: Image {
         Image(systemName: "\(rawValue)", description: iconDescription)
+    }
+    
+    var name: String {
+        switch self {
+        case .github: "GitHub"
+        case .linkedin: "LinkedIn"
+        case .instagram: "Instagram"
+        }
     }
     
     var iconDescription: String {
