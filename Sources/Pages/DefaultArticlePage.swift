@@ -21,7 +21,8 @@ struct DefaultArticlePage: ArticlePage {
 
             if let subtitle = article.subtitle {
                 Text(subtitle)
-                    .font(.title5)
+                    .font(.pressStart2P)
+                    .font(.lead)
             }
 
             if let image = article.imageHTML {

@@ -25,7 +25,8 @@ struct BlogPostCard: HTML {
                 .frame(width: .percent(100%))
                 Spacer(size: .small)
                 Text(article.title)
-                    .font(.title5)
+                    .font(.pressStart2P)
+                    .font(.lead)
             }
             .padding(.medium)
             .class("bg-body-secondary")

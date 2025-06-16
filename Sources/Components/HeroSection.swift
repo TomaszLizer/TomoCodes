@@ -21,7 +21,7 @@ struct HeroSection: HTML {
     var body: some HTML {
         Section {
             Text(title)
-                .font(.title2)
+                .font(.title1)
             
             Text{
                 subtitle
@@ -34,7 +34,8 @@ struct HeroSection: HTML {
                         .class("cursor")
                 }
             }
-            .font(.title6)
+            .font(.pressStart2P)
+            .font(.lead)
             
             if typewriterData?.isEmpty == false {
                 Script(file: URL(static: "/scripts/typewriter.js"))
