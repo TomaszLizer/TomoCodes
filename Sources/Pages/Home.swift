@@ -23,6 +23,8 @@ struct Home: StaticPage {
         aboutMe
         
         latestPost
+        
+        latestTips
     }
     
     private var aboutMe: some HTML {
@@ -76,6 +78,17 @@ struct Home: StaticPage {
             Text("Latest posts").font(.title2)
             let latestPosts = articles.typed(.blog)
             PostsGrid(articles: latestPosts)
+        }
+        .padding(.vertical, .large)
+    }
+    
+    private var latestTips: some HTML {
+        Section {
+            Text("Latest tips").font(.title2)
+            let latestTips = articles.typed(.tip)
+            ForEach(latestTips) { tip in
+                TipItem(article: tip)
+            }
         }
         .padding(.vertical, .large)
     }

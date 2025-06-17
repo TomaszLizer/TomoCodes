@@ -9,6 +9,7 @@ import Ignite
 
 enum ArticleType: String {
     case blog
+    case tip
 }
 
 extension ArticleLoader {
