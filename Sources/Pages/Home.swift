@@ -14,9 +14,10 @@ struct Home: StaticPage {
     private var articles
     
     var body: some HTML {
+        let conditionalBreak = "<br class=\"d-xs-inline d-sm-none\" />"
         HeroSection(
             title: "Coffee, Code & DIY",
-            subtitle: "Thoughts on ",
+            subtitle: "Thoughts on \(conditionalBreak)",
             typewriterData: ["Hacking", "Espresso", "Projects", "Tinkering"]
         )
         
