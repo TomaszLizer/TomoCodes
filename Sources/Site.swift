@@ -20,7 +20,8 @@ struct ExampleSite: Site {
     var url = URL(static: "https://tomo.codes")
     /// Manually passed as custom component to HEAD
     var favicon: URL? = nil
-    var builtInIconsEnabled = true
+    var builtInIconsEnabled: BootstrapOptions = .remoteBootstrap
+    var useDefaultBootstrapURLs: BootstrapOptions = .remoteBootstrap
 
     var author = "Tomasz Lizer"
     
