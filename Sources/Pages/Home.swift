@@ -24,8 +24,6 @@ struct Home: StaticPage {
         aboutMe
         
         latestPost
-        
-        latestCoffees
     }
     
     private var aboutMe: some HTML {
@@ -79,14 +77,6 @@ struct Home: StaticPage {
             Text("Latest posts").font(.title2)
             let latestPosts = articles.typed(.blog)
             PostsGrid(articles: latestPosts)
-        }
-        .padding(.vertical, .large)
-    }
-    
-    private var latestCoffees: some HTML {
-        Section {
-            Text("Latest coffees").font(.title2)
-            CoffeeGrid(coffees: .allItems)
         }
         .padding(.vertical, .large)
     }
