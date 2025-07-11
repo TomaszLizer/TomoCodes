@@ -9,7 +9,7 @@ imageDescription: "Cozy 16-bit pixel-art banner showing person in front of the c
 date: 2025-06-14
 lastModified: 2025-06-14
 ---
-For me Tasks where sort of black boxes which allowed me to switch to the async context of the app. Typically I assumed those will move me to some background Thread. I also love magic trick of constraining Task to `MainActor`:
+For me Tasks were sort of black boxes which allowed me to switch to the async context of the app. Typically I assumed those will move me to some background Thread. I also love magic trick of constraining Task to `MainActor`:
 ```swift
 Task { @MainActor in [...] }
 ```
