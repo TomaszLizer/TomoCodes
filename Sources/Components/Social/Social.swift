@@ -43,7 +43,7 @@ enum Social: String, CaseIterable, Sendable, InlineElement {
     var urlString: String {
         switch self {
         case .github: "https://github.com/TomaszLizer"
-        case .linkedin: "https://linkedin.com/in/tomasz-lizer-9b390bb4/"
+        case .linkedin: "https://linkedin.com/in/tomasz-lizer/"
         case .instagram: "https://instagram.com/engineer_pedi"
         }
     }
